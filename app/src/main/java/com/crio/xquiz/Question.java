@@ -6,6 +6,10 @@ public class Question{
     //TODO: Define the variable to store the answer text
     //TODO: Define the variable to store the list of text choices
 
+    private String questionText;
+    private List<String> choices;
+    private String answer;
+
     // TODO: Create the Question class constructor 
     // use the  signature :  public Question(String questionText, List<String> choices, String answer)
     // Include the following validations
@@ -20,20 +24,55 @@ public class Question{
                 // print “Answer is not present among the choices!”
         // Else
                 // initialise all the defined variables using `this` keyword
-            
+          
+        
+        public Question(String questionText, List<String> choices, String answer) { 
+                if(questionText == null || questionText == ""){
+                        System.out.println("Question text cannot be null or empty!");
+                }else if(choices == null || choices.isEmpty()){
+                        System.out.println("Choices cannot be null or empty!");
+                }else if(answer == null || answer == ""){
+                        System.out.println("Answer cannot be null or empty!");
+                }else if(!choices.contains(answer)){
+                        System.out.println("Answer is not present among the choices!");
+                }
+                else {
+                        this.questionText = questionText;
+                        this.choices = choices;
+                        this.answer = answer;
+                }
+        }
+
+
                 
     // Note: The print statements should match exactly with the one specified above, since we have test cases designed on this
     // If the print statements do not match then the tests might fail, so be cautious
 
     //TODO: Create the getter method : public String getAnswer(), which returns the answer
+        public String getAnswer(){
+                return answer;
+        }
 
     //TODO: Create the getter method : public String getQuestionText(), which returns the questionText
+        public String getQuestionText(){
+                return questionText;
+        }
 
     //TODO: Create the getter method : public List<String> getChoices(), which returns the choices
+        public List<String> getChoices(){
+                return choices;
+        }
 
     //TODO: Create the method checkAnswer() with signature: public boolean checkAnswer(String answer)
         // Validate: If answer provided in the input matches the existing answer for the given question, then return True
         // Else:  return False.
+        public boolean checkAnswer(String answer){
+                if(this.answer == answer){
+                        return true;
+                }else{
+                        return false;
+                }
+        }
 
 
 public void display(){
